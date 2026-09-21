@@ -2,6 +2,8 @@ import copy
 
 class MethodeError(Exception):
     pass
+class VisualisierungError(Exception):
+    pass
 
 def parse(Pfad):
     Sequenzen = {}
@@ -271,4 +273,7 @@ def ZeichneBaum(BaumString, Dateiname="Stammbaum.png"):
     plt.show()
     print(f"Baum gespeichert als {Dateiname}")
 
-ZeichneBaum(Stammbaum)
+try:
+    ZeichneBaum(Stammbaum)
+except:
+    raise VisualisierungError(f"Fehler beim Zeichnen des Baums. Vergessen Sie nicht, matplotlib zu installieren")
